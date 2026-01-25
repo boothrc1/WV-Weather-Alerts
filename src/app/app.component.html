@@ -1,0 +1,28 @@
+<div class="app-wrapper">
+  <h1>WV weather alerts</h1>
+  <div *ngIf="alerts.length" class="alerts-container">
+    <div class="alert-card" *ngFor="let alert of alerts">
+      <h3>{{ alert.event }}</h3>
+  
+      <div class="alert-meta">
+        Severity: {{ alert.severity }} • Urgency: {{ alert.urgency }}
+      </div>
+  
+      <div class="alert-areas">
+        Areas: {{ alert.areas.join(', ') }}
+      </div>
+  
+      <div class="alert-description">
+        {{ alert.headline }}
+      </div>
+  
+      <div class="alert-footer">
+        Expires: {{ alert.expires | date:'short' }}
+      </div>
+    </div>
+
+    <ng-template #noAlerts>
+      <div class="no-alerts"> No active alerts for this area. <span>Check back later for updates.</span> </div>
+    </ng-template>
+  </div>
+</div>
