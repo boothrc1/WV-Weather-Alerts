@@ -57,6 +57,32 @@
   color: #777;
 }
 
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #e0e6ed;
+  border-top-color: #4a90e2;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .alert-card.severe { border-left-color: #d9534f; }   /* red */
 .alert-card.moderate { border-left-color: #f0ad4e; } /* orange */
 .alert-card.minor { border-left-color: #5bc0de; }    /* blue */

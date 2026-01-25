@@ -1,5 +1,11 @@
 <div class="app-wrapper">
   <h1>WV weather alerts</h1>
+
+  <div *ngIf="loading" class="spinner-container">
+    <div class="spinner"></div>
+    <p>Loading weather alerts…</p>
+  </div>
+
   <div *ngIf="alerts.length" class="alerts-container">
     <div class="alert-card" *ngFor="let alert of alerts">
       <h3>{{ alert.event }}</h3>

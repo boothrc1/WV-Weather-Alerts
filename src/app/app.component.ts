@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map, delay } from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators'
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'd3-experiment';
+  loading = true;
   alerts: [];
 
   private destroy$ = new Subject<void>();
@@ -18,7 +19,10 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.getActiveAlerts().subscribe(data => this.alerts = data);
+    this.getActiveAlerts().subscribe(data => {
+      this.alerts = data;
+      this.loading = false;
+    });
   }
 
   ngOnDestroy(): void {
@@ -28,6 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
   
   getActiveAlerts(): Observable<any> { 
     return this.http.get<any>(this.apiUrl).pipe(
+      delay(2000),
       map(response => {
         return response.features.map(f => ({ 
           id: f.properties.id,
