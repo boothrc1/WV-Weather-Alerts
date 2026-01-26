@@ -9,7 +9,6 @@ import { map, delay } from 'rxjs/operators'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'd3-experiment';
   loading = true;
   alerts: [];
 

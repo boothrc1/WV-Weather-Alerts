@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "d3-experiment": {
+    "wv-weather-alerts": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/d3-experiment",
+            "outputPath": "dist/wv-weather-alerts",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "d3-experiment:build"
+            "browserTarget": "wv-weather-alerts:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "d3-experiment:build:production"
+              "browserTarget": "wv-weather-alerts:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "d3-experiment:build"
+            "browserTarget": "wv-weather-alerts:build"
           }
         },
         "test": {
@@ -114,15 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "d3-experiment:serve"
+            "devServerTarget": "wv-weather-alerts:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "d3-experiment:serve:production"
+              "devServerTarget": "wv-weather-alerts:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "d3-experiment"
+  "defaultProject": "wv-weather-alerts"
 }
