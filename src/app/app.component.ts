@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, delay } from 'rxjs/operators'
+import { AlertFeatureProperties } from './types/alerts.interfaces';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { map, delay } from 'rxjs/operators'
 })
 export class AppComponent implements OnInit, OnDestroy {
   loading = true;
-  alerts: [];
+  alerts: AlertFeatureProperties[] = [];
 
   private destroy$ = new Subject<void>();
 
@@ -29,9 +30,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
   
-  getActiveAlerts(): Observable<any> { 
+  getActiveAlerts(): Observable<AlertFeatureProperties[]> { 
     return this.http.get<any>(this.apiUrl).pipe(
-      delay(2000),
+      // contrivance to display spinner a little more smoothly
+      delay(1000),
       map(response => {
         return response.features.map(f => ({ 
           id: f.properties.id,
